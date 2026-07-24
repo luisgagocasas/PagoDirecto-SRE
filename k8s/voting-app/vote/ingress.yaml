@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: microfront
-  namespace: microfront
+  name: vote
+  namespace: voting-app
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -11,10 +11,10 @@ spec:
   rules:
     - http:
         paths:
-          - path: /microfront(/|$)(.*)
+          - path: /vote(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: microfront
+                name: vote
                 port:
                   number: 80

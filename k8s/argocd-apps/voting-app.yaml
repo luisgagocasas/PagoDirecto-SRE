@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: microfront-gitops
+  name: voting-app
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -10,10 +10,12 @@ spec:
   source:
     repoURL: https://github.com/luisgagocasas/PagoDirecto-SRE.git
     targetRevision: main
-    path: k8s/microfront-gitops
+    path: k8s/voting-app
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: microfront
+    namespace: voting-app
   syncPolicy:
     automated:
       prune: true

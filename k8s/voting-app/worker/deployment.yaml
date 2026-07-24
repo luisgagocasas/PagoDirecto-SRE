@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microfront-hpa
-  namespace: microfront
+  name: worker
+  namespace: voting-app
   labels:
-    app: microfront-hpa
+    app: worker
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: microfront-hpa
+      app: worker
   template:
     metadata:
       labels:
-        app: microfront-hpa
+        app: worker
     spec:
       containers:
-        - name: microfront-hpa
-          image: nginx:1.30.4
-          ports:
-            - containerPort: 80
+        - name: worker
+          image: dockersamples/examplevotingapp_worker:latest
           resources:
             requests:
               cpu: 100m

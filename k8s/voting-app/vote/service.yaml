@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: microfront-hpa
-  namespace: microfront
+  name: vote
+  namespace: voting-app
   labels:
-    app: microfront-hpa
+    app: vote
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
-    app: microfront-hpa
+    app: vote
   ports:
     - port: 80
       targetPort: 80

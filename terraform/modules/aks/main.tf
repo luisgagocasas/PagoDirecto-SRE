@@ -37,4 +37,11 @@ resource "azurerm_kubernetes_cluster" "this" {
     dns_zone_ids             = []
     default_nginx_controller = "External"
   }
+
+  dynamic "oms_agent" {
+    for_each = var.log_analytics_workspace_id != null ? [1] : []
+    content {
+      log_analytics_workspace_id = var.log_analytics_workspace_id
+    }
+  }
 }

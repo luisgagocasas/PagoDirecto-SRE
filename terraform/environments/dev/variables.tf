@@ -17,3 +17,8 @@ variable "argocd_chart_version" {
   type    = string
   default = "10.2.1"
 }
+
+variable "log_retention_days" {
+  type    = number
+  default = 30
+}
