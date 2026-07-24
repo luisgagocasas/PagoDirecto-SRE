@@ -34,21 +34,32 @@ module "network" {
   tags                  = local.tags
 }
 
+module "monitoring" {
+  source = "../../modules/monitoring"
+
+  name                = "log-${local.name_prefix}-${local.instance}"
+  location            = module.resource_group.location
+  resource_group_name = module.resource_group.name
+  retention_in_days   = var.log_retention_days
+  tags                = local.tags
+}
+
 module "aks" {
   source = "../../modules/aks"
 
-  cluster_name        = "aks-${local.name_prefix}-${local.instance}"
-  dns_prefix          = "aks-${local.name_prefix}"
-  location            = module.resource_group.location
-  resource_group_name = module.resource_group.name
-  subnet_id           = module.network.subnet_id
-  kubernetes_version  = var.kubernetes_version
-  node_vm_size        = var.node_vm_size
-  max_pods            = var.max_pods
-  pod_cidr            = "10.244.0.0/16"
-  service_cidr        = "10.11.0.0/16"
-  dns_service_ip      = "10.11.0.10"
-  tags                = local.tags
+  cluster_name               = "aks-${local.name_prefix}-${local.instance}"
+  dns_prefix                 = "aks-${local.name_prefix}"
+  location                   = module.resource_group.location
+  resource_group_name        = module.resource_group.name
+  subnet_id                  = module.network.subnet_id
+  kubernetes_version         = var.kubernetes_version
+  node_vm_size               = var.node_vm_size
+  max_pods                   = var.max_pods
+  pod_cidr                   = "10.244.0.0/16"
+  service_cidr               = "10.11.0.0/16"
+  dns_service_ip             = "10.11.0.10"
+  log_analytics_workspace_id = module.monitoring.id
+  tags                       = local.tags
 }
 
 module "argocd" {

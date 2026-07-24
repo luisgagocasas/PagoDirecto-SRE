@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vote-stress-test
+  namespace: voting-app
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: hey
+          image: williamyeh/hey:latest
+          args:
+            - "-z"
+            - "5m"
+            - "-c"
+            - "200"
+            - "http://vote.voting-app.svc.cluster.local/"

@@ -45,3 +45,8 @@ variable "dns_service_ip" {
 variable "tags" {
   type = map(string)
 }
+
+variable "log_analytics_workspace_id" {
+  type    = string
+  default = null
+}

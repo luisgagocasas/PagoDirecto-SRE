@@ -25,3 +25,7 @@ output "argocd_url" {
 output "argocd_admin_username" {
   value = "admin"
 }
+
+output "log_analytics_workspace_name" {
+  value = module.monitoring.name
+}

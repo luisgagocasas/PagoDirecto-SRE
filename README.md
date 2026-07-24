@@ -111,3 +111,10 @@ tolerations:
 ```
 
 `max_pods` esta fijado en 250 por nodo (Azure CNI Overlay) en ambos node pools.
+
+
+# Application vote
+
+Ejemplo base: https://github.com/dockersamples/example-voting-app/tree/main/k8s-specifications
+
+
