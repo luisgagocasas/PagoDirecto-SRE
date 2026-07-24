@@ -11,7 +11,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /microfront-gitops(/|$)(.*)
+          - path: /microfront-gitops-test(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
