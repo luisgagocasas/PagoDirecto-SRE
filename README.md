@@ -2,6 +2,8 @@
 
 Infraestructura Azure para un clúster AKS con ArgoCD, entorno `dev`, proyecto PagoDirecto.
 
+SRE: Luis Gago Casas
+
 ## Estructura
 
 ```
@@ -26,9 +28,7 @@ Patron: `<tipo>-<proyecto>-<entorno>-<region>-<instancia>`
 | AKS Cluster | aks-pgd-dev-eus2-001 |
 | Log Analytics | log-pgd-dev-eus2-001 |
 | Node pool sistema | default |
-| Node pool usuario | user2 |
 | Namespace ArgoCD | argocd |
-| Namespace despliegues propios | user-2 |
 
 Tags: `project=pagodirecto`, `environment=dev`, `managed-by=terraform`.
 
