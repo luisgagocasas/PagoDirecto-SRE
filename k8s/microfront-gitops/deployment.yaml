@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microfront-gitops
+  namespace: microfront
+  labels:
+    app: microfront-gitops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microfront-gitops
+  template:
+    metadata:
+      labels:
+        app: microfront-gitops
+    spec:
+      containers:
+        - name: microfront-gitops
+          image: nginx:1.30.4
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
