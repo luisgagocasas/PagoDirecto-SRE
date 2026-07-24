@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microfront
+  namespace: microfront
+  labels:
+    app: microfront
+spec:
+  type: ClusterIP
+  selector:
+    app: microfront
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
