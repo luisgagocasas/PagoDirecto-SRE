@@ -118,3 +118,33 @@ tolerations:
 Ejemplo base: https://github.com/dockersamples/example-voting-app/tree/main/k8s-specifications
 
 
+# Test
+
+kubectl get application voting-app -n argocd
+kubectl get pods,svc -n voting-app
+kubectl get hpa -n voting-app -w
+
+stress
+
+kubectl apply -f job.yaml
+
+
+# dato
+
+Obtener la IP publica del servicio `vote` y `result`:
+
+kubectl get svc -n voting-app vote result
+
+ENcueta: http://40.65.239.165/
+
+Reultado: http://4.153.5.201/
+
+
+# Escalado
+
+kubectl get hpa -n voting-app -w
+
+kubectl describe hpa vote -n voting-app
+
+
+kubectl delete job vote-stress-test -n voting-app
